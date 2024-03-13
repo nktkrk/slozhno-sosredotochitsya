@@ -9,6 +9,7 @@
 .page {
   display: grid;
   background-color: var(--background-color);
+  background-attachment: fixed;
   /* сохраните в разметке и стилях класс page. На его основе работает скрипт. */
 }
 
