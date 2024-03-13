@@ -13,7 +13,7 @@
   --accent-color: #FF0070;
   --background-color: #000028;
   --text-color: #F1B2CE;
-  --background-image: url("../images/cover-image-dark.png");  
+  --background-image: url("../images/cover-image-dark.png");
   --subtitle-color: #000028;
   --menu-color: #FF0070;
   --focus-color: #DB00FF;
@@ -34,7 +34,7 @@
   .rec {
       margin-top: 17px;
       margin-right: 29px;
-  }  
+  }
 }
 
 .rec::before {
