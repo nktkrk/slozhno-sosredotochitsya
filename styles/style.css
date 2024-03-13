@@ -9,7 +9,6 @@
 .page {
   display: grid;
   background-color: var(--background-color);
-  background-attachment: fixed;
   /* сохраните в разметке и стилях класс page. На его основе работает скрипт. */
 }
 
@@ -28,6 +27,7 @@ header {
   align-self: start;
   margin-top: 10px;
   margin-right: 10px;
+  margin-bottom: 7px;
   font-size: 25px;
   color: transparent;
   line-height: 1em;
@@ -38,7 +38,7 @@ header {
 .corner_bottom {
   justify-self: start;
   align-self: end;
-  margin-bottom: 10px;
+  margin-bottom: 30px;
   margin-left: 10px;
   font-size: 25px;
   color: transparent;
@@ -54,6 +54,10 @@ header {
 
 .header__theme-menu-list {
   list-style: none;
+}
+
+.header__theme-menu-item {
+  margin-bottom: 11px;
 }
 
 .header__theme-menu-button {
@@ -88,6 +92,7 @@ text-decoration: underline;
 .no-focus_title {
   margin-left: 10px;
   align-self: end;
+  margin-bottom: 25px;
   font-family: IBM Plex Mono;
   font-size: clamp(7.25rem, 7.0115rem + 1.0178vw, 7.5rem);
   font-weight: 700;
@@ -119,8 +124,7 @@ text-decoration: underline;
 @media (min-width: 768px) {
 
   .corner_top {
-    margin-top: 20px;
-    margin-right: 20px;
+    margin: 20px 20px 50px;
   }
 
   .corner_bottom {
@@ -130,9 +134,11 @@ text-decoration: underline;
 
   .header__theme-menu {
     margin-right: 20px;
+    margin-bottom: 30px;
   }
 
   .no-focus_title {
+    margin-bottom: 25px;
     margin-left: 0;
     align-self: center;
     font-size: clamp(7.5rem, 0.5625rem + 14.4531vw, 9.8125rem);
@@ -140,48 +146,60 @@ text-decoration: underline;
 
   .subtitle_box {
     margin-right: 20px;
+    margin-bottom: 45px;
   }
 }
 
 @media (min-width: 1024px) {
 
+  .header {
+    height: max(768px, 100vh);
+  }
 
   .header__theme-menu {
     position: absolute;
-    margin-top: 10px;
+    margin-top: 18px;
     justify-self: center;
   }
 
   .header__theme-menu-list {
     display: flex;
-    margin-left: 25px;
+    margin-left: 20px;
     gap: 9px;
   }
 
   .no-focus_title {
-    margin-top: 135px;
+    margin-top: 90px;
     align-self: end;
+    text-shadow: 4px 4px rgba(255, 0, 112, 1);
+
   }
 
    .subtitle_box {
     position: relative;
-    top: 52px;
-    right: 4px;
+    top: 30px;
+    right: 0px;
     width: 491px;
-   }
+  } 
 
 }
 
 section {
-  margin: 40px 10px 0;
+  margin: 40px 10px 30px;
 }
 
 .article_why {
+  margin-top: 20px;
   display: grid;
+}
+
+.article_what {
+  margin-top: 33px;
 }
 
 .article_how {
   display: grid;
+  margin-top: 50px;
 }
 
 @media (min-width: 768px) {
@@ -192,32 +210,47 @@ section {
 
   .article_why {
     margin-top: 60px;
-    grid-template-columns: 236fr 472fr;
+    grid-template-columns: 230fr 475fr;
+    gap: 30px;
   }
 
   .article_what {
-    margin-top: 80px;
+    margin-top: 60px;
   }
 
-  .article_what .article_title {
+  .article_what .article_title{
   width: 236px;
   }
 
   .article_how {
-    margin-top: 80px;
-    grid-template-columns: 236fr 472fr;
+    margin-top: 83px;
+    grid-template-columns: 230fr 475fr;
+    gap: 30px;
   }
 
 }
 
 @media (min-width: 1024px) {
 
+  .article_why {
+    grid-template-columns: 222fr 475fr;
+  }
+
   .what {
-      margin: 0 10px;
       display: grid;
       grid-template-columns: repeat(3, 1fr);
       gap: 20px;
     }
+
+    .article_how {
+      margin-top: 60px;
+      grid-template-columns: 222fr 475fr;
+      gap: 30px;
+    }
+
+    .article_what .article_title{
+      width: 260px;
+      }
 
 }
 
@@ -229,7 +262,7 @@ section {
   line-height: 23px;
   letter-spacing: 0em;
   text-align: left;
-  color: var(--accent-color);
+  color: var(--text-color);
 
 }
 
@@ -243,7 +276,7 @@ section {
   font-family: IBM Plex Mono;
   font-size: 18px;
   font-weight: 700;
-  line-height: 23px;
+  line-height: 23,5x;
   letter-spacing: 0em;
   text-align: left;
 }
@@ -256,7 +289,7 @@ section {
   font-family: IBM Plex Mono;
   font-size: 18px;
   font-weight: 400;
-  line-height: 23px;
+  line-height: 23,5px;
   text-align: left;
   background-color: var(--accent-color);
   color: var(--subtitle-color);
@@ -266,11 +299,19 @@ section {
   font-family: IBM Plex Mono;
   font-size: 18px;
   font-weight: 400;
-  line-height: 23px;
+  line-height: 23,5px;
   letter-spacing: 0em;
   text-align: left;
   color: var(--text-color);
-  margin: 10px 0 20px;
+  margin: 10px 0 18px;
+}
+
+@media (min-width: 768px) {
+
+  .article_text {
+    margin: 7px 0 22px;
+  }
+
 }
 
 a {
@@ -289,13 +330,12 @@ a:focus {
 
 .pictures_block {
   display: grid;
-  margin: 40px 10px 0 10px;
+  margin: 20px 10px 0;
 }
 
 .pictures {
     display: grid;
     width: 100%;
-    margin-bottom: 60px;
 }
 
 .sunset {
@@ -303,7 +343,6 @@ a:focus {
 }
 
 .picture {
-  margin-bottom: 10px;
   width: 100%;
   height: 100%;
   object-fit: contain;
@@ -312,13 +351,13 @@ a:focus {
 @media (min-width: 768px) {
 
   .pictures_block {
-    margin: 80px 20px 0;
+    display: grid;
+    margin: 60px 20px 0;
   }
 
   .pictures {
-    margin-top: 20px;
+    margin-top: 15px;
     grid-template-columns: 1fr 1fr 1fr;
-    grid-template-rows: 192fr 230fr 318fr;
     gap: 20px;
   }
 
@@ -334,18 +373,14 @@ a:focus {
   .ice-cream {
     grid-column-start: 3;
     grid-column-end: 3;
-    grid-row-start: 1;
-    grid-row-end: 3;
-
+    grid-row: span 2;
   }
 
   .tape {
-    grid-row-start: 2;
-    grid-row-end: 4;
+    grid-row: span 2;
   }
 
   .street {
-    
     grid-column-start: 2;
     grid-column-end: 4;
   }
@@ -367,7 +402,7 @@ a:focus {
   align-items: center;
   width: 100%;
   height: 100vh;
-  margin-top: 30px;
+  margin-top: 42px;
 }
 
 .focus_title {
@@ -380,4 +415,33 @@ a:focus {
   text-align: left;
   color: var(--focus-color);
   text-shadow: 4px 4px var(--accent-color);
+}
+
+@media (min-width: 768px) {
+
+  .footer {
+    margin-top: 53px;
+  }
+
+  .focus_title {
+    margin-bottom: 50px;
+    align-self: center;
+    font-family: IBM Plex Mono;
+    font-size: clamp(7.5rem, 0.5625rem + 14.4531vw, 9.8125rem);
+    font-weight: 700;
+    line-height: 96px;
+    letter-spacing: 0em;
+    text-align: left;
+    color: var(--focus-color);
+    text-shadow: 4px 4px var(--accent-color);
+  }
+
+}
+
+@media (min-width: 1024px) {
+
+  .focus_title {
+    text-shadow: 4px 4px rgba(255, 0, 112, 1);
+  }
+
 }
