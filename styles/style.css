@@ -1,15 +1,12 @@
 /* Основные стили проекта. Это стили для темы, которую вы верстаете первой. */
 
-* {
-  box-sizing: border-box;
-  margin: 0;
-  padding: 0;
-}
-
 .page {
   display: grid;
   background-color: var(--background-color);
   background-attachment: fixed;
+  background-image: var(--background-image);
+  background-position: center;
+  margin: 0;
   /* сохраните в разметке и стилях класс page. На его основе работает скрипт. */
 }
 
@@ -17,40 +14,62 @@ header {
   display: grid;
   height: max(668px, 100vh);
   width: 100%;
-  background-image: var(--background-image);
-  background-size: cover;
-  background-position: center;
-  position: relative;
 }
 
-.corner_top {
-  justify-self: end;
-  align-self: start;
-  margin-top: 10px;
-  margin-right: 10px;
-  margin-bottom: 7px;
-  font-size: 25px;
+.rec {
+  position: absolute;
+  right: 20px;
+  top: 10px;
+}
+
+.rec::before {
+  content: "rec";
+  text-transform: uppercase;
+  display: inline-block;
+  color: var(--rec-color);
+  font-family: "IBM Plex Mono", "Arial", sans-serif;
+  font-size: 18px;
+  font-weight: 400;
+}
+
+.rec::after {
+  content: "";
+  display: inline-block;
+  height: 9px;
+  width: 9px;
+  margin-left: 15px;
+  background-color: var(--rec-color);
+  border-radius: 50%;
+  box-shadow: 0 0 5px 3px var(--rec-color);
+}
+
+.corner_top::before {
+  content: "M.";
+  position: absolute;
   color: transparent;
-  line-height: 1em;
+  right: 10px;
+  top: 10px;
+  font-size: 21px;
   border-top: 1px solid var(--menu-color);
   border-right: 1px solid var(--menu-color);
 }
 
-.corner_bottom {
-  justify-self: start;
-  align-self: end;
-  margin-bottom: 30px;
-  margin-left: 10px;
-  font-size: 25px;
+.corner_bottom::before {
+  content: "M.";
+  position: absolute;
   color: transparent;
-  line-height: 1em;
+  left: 10px;
+  bottom: 10px;
+  font-size: 21px;
   border-bottom: 1px solid var(--menu-color);
   border-left: 1px solid var(--menu-color);
 }
 
 .header__theme-menu {
   justify-self: end;
-  margin-right: 10px;
+  align-self: start;
+  margin-right: 2.5vw;
+  margin-top: 3.3vh;
 }
 
 .header__theme-menu-list {
@@ -58,27 +77,29 @@ header {
 }
 
 .header__theme-menu-item {
-  margin-bottom: 11px;
+  margin-bottom: 1.6vh;
 }
 
 .header__theme-menu-button {
   background-color: transparent;
   border: 1px solid transparent;
-  font-family: IBM Plex Mono;
+  text-transform: lowercase;
+  font-family: "IBM Plex Mono", "Arial", sans-serif;
   font-size: 18px;
   font-weight: 400;
   text-align: center;
   padding: 0px 13px;
   color: var(--menu-color);
+  cursor: pointer;
 }
 
 .header__theme-menu-button:hover {
-text-decoration: underline;
+  border: 1px solid var(--hover-color);
 }
 
 .header__theme-menu-button:focus {
-  border: none;
-  text-decoration: underline;
+  outline: none;
+  border-bottom: 1px solid var(--menu-color);
 }
 
 .header__theme-menu-button:active {
@@ -91,180 +112,152 @@ text-decoration: underline;
 }
 
 .no-focus_title {
-  margin-left: 10px;
-  align-self: end;
-  margin-bottom: 25px;
-  font-family: IBM Plex Mono;
-  font-size: clamp(7.25rem, 7.0115rem + 1.0178vw, 7.5rem);
+  margin-left: 2.5vw;
+  align-self: center;
+  font-family: "IBM Plex Mono", "Arial", sans-serif;
+  font-size: var(--logo-size);
   font-weight: 700;
   line-height: 96px;
   letter-spacing: 0em;
   text-align: left;
   color: var(--focus-color);
-  text-shadow: 4px 4px var(--accent-color);
+  text-shadow: 4px 4px var(--shadow-color);
+  margin-bottom: 0;
+  margin-top: 0;
 }
 
 .subtitle_box {
-  margin-right: 10px;
-  width: min(calc(100% - 20px), 364px);
-  background-color: var(--accent-color);
+  justify-self: stretch;
   align-self: end;
-  justify-self: end;
+  margin-left: auto;
+  margin-right: 2.5vw;
+  margin-bottom: 4.5vh;
+  width: min(calc(100% - 1vw), 355px);
+  background-color: var(--accent-color);
+  height: min-content;
 }
 
 .subtitle {
   display: grid;
   align-self: center;
-  font-family: IBM Plex Mono;
+  font-family: "IBM Plex Mono", "Arial", sans-serif;
   font-size: 18px;
   font-weight: 700;
   text-align: left;
   color: var(--subtitle-color);
+  margin: 0;
 }
 
 @media (min-width: 768px) {
-
-  .corner_top {
-    margin: 20px 20px 50px;
+  .header {
+    display: grid;
+    grid-template-rows: min-content 1fr 1fr 1fr min-content;
   }
 
-  .corner_bottom {
-    margin-bottom: 20px;
-    margin-left: 20px;
+  .corner_top::before {
+    margin-top: 10px;
+    margin-right: 10px;
+  }
+
+  .corner_bottom::before {
+    margin-bottom: 10px;
+    margin-left: 10px;
   }
 
   .header__theme-menu {
-    margin-right: 20px;
-    margin-bottom: 30px;
+    align-self: end;
+    margin-right: 2.5vw;
+    margin-bottom: 3.8vh;
+  }
+
+  .header__theme-menu-item {
+    margin-bottom: 1vh;
   }
 
   .no-focus_title {
-    margin-bottom: 25px;
-    margin-left: 0;
+    margin-left: 0vw;
+    justify-self: start;
     align-self: center;
-    font-size: clamp(7.5rem, 0.5625rem + 14.4531vw, 9.8125rem);
   }
 
   .subtitle_box {
-    margin-right: 20px;
-    margin-bottom: 45px;
+    margin-right: 2.5vw;
+    margin-top: 4vh;
+    align-self: start;
+    justify-self: end;
+    width: 364px;
   }
 }
 
 @media (min-width: 1024px) {
-
   .header {
     height: max(768px, 100vh);
+    grid-template-columns: 1fr 1fr 1fr;
+    grid-template-rows: 1fr min-content 1fr;
   }
 
   .header__theme-menu {
-    position: absolute;
-    margin-top: 18px;
+    grid-column-start: 2;
+    grid-row-start: 1;
+    align-self: start;
+    margin-top: 0.3vh;
+    margin-right: 4vw;
     justify-self: center;
   }
 
   .header__theme-menu-list {
     display: flex;
-    margin-left: 20px;
-    gap: 9px;
+    gap: 1vw;
   }
 
   .no-focus_title {
-    margin-top: 90px;
-    align-self: end;
+    grid-column-start: 1;
+    grid-column-end: 4;
+    align-self: center;
     text-shadow: 4px 4px rgba(255, 0, 112, 1);
-
   }
 
-   .subtitle_box {
-    position: relative;
-    top: 30px;
-    right: 0px;
-    width: 491px;
+  .subtitle_box {
+    grid-column-start: 2;
+    grid-column-end: 3 span;
+    grid-row-start: 3;
+    width: 48vw;
+    align-self: center;
+    margin-bottom: 5vh;
+    margin-right: 2vw;
   }
-
 }
 
 section {
-  margin: 40px 10px 30px;
+  margin: 40px 10px 28px;
 }
 
 .article_why {
-  margin-top: 20px;
   display: grid;
 }
 
+.article_why .article_title {
+  width: 335px;
+}
+
 .article_what {
-  margin-top: 33px;
+  margin-top: 0px;
 }
 
 .article_how {
   display: grid;
-  margin-top: 50px;
-}
-
-@media (min-width: 768px) {
-
-  section {
-    margin: 0 20px;
-  }
-
-  .article_why {
-    margin-top: 60px;
-    grid-template-columns: 230fr 475fr;
-    gap: 30px;
-  }
-
-  .article_what {
-    margin-top: 60px;
-  }
-
-  .article_what .article_title {
-  width: 236px;
-  }
-
-  .article_how {
-    margin-top: 83px;
-    grid-template-columns: 230fr 475fr;
-    gap: 30px;
-  }
-
-}
-
-@media (min-width: 1024px) {
-
-  .article_why {
-    grid-template-columns: 222fr 475fr;
-  }
-
-  .what {
-      display: grid;
-      grid-template-columns: repeat(3, 1fr);
-      gap: 20px;
-    }
-
-    .article_how {
-      margin-top: 60px;
-      grid-template-columns: 222fr 475fr;
-      gap: 30px;
-    }
-
-    .article_what .article_title {
-      width: 260px;
-      }
-
+  margin-top: 48px;
 }
 
 .article_title {
-  margin-bottom: 20px;
-  font-family: IBM Plex Mono;
+  margin: 0 0 20px 0;
+  font-family: "IBM Plex Mono", "Arial", sans-serif;
   font-size: 18px;
   font-weight: 700;
   line-height: 23px;
   letter-spacing: 0em;
   text-align: left;
-  color: var(--text-color);
-
+  color: var(--title-color);
 }
 
 .article_block {
@@ -272,12 +265,13 @@ section {
 }
 
 .article_subtitle {
+  margin: 0 0 10px 0;
   background-color: var(--accent-color);
   color: var(--subtitle-color);
-  font-family: IBM Plex Mono;
+  font-family: "IBM Plex Mono", "Arial", sans-serif;
   font-size: 18px;
   font-weight: 700;
-  line-height: 23,5x;
+  line-height: 23px;
   letter-spacing: 0em;
   text-align: left;
 }
@@ -287,32 +281,25 @@ section {
 }
 
 .article_subtitle_point {
-  font-family: IBM Plex Mono;
+  margin: 0px 0 9px 0;
+  font-family: "IBM Plex Mono", "Arial", sans-serif;
   font-size: 18px;
   font-weight: 400;
-  line-height: 23,5px;
+  line-height: 23, 5px;
   text-align: left;
   background-color: var(--accent-color);
   color: var(--subtitle-color);
 }
 
 .article_text {
-  font-family: IBM Plex Mono;
+  margin: 0 0 20px 0;
+  font-family: "IBM Plex Mono", "Arial", sans-serif;
   font-size: 18px;
   font-weight: 400;
-  line-height: 23,5px;
+  line-height: 23.5px;
   letter-spacing: 0em;
   text-align: left;
   color: var(--text-color);
-  margin: 10px 0 18px;
-}
-
-@media (min-width: 768px) {
-
-  .article_text {
-    margin: 7px 0 22px;
-  }
-
 }
 
 a {
@@ -322,74 +309,122 @@ a {
 }
 
 a:hover {
-  text-decoration: underline;
+  border-bottom: 1px solid var(--text-color);
 }
 
 a:focus {
+  outline: none;
   border: 1px solid var(--hover-color);
+}
+
+@media (min-width: 768px) {
+  section {
+    margin: 0 20px 0 20px;
+  }
+
+  .article_why {
+    display: grid;
+    margin-top: 60px;
+    grid-template-columns: 200fr 420fr;
+    gap: 30px;
+  }
+
+  .article_why .article_title {
+    width: auto;
+  }
+
+  .article_what {
+    margin-top: 60px;
+  }
+
+  .article_what .article_title {
+    width: 236px;
+  }
+
+  .article_how {
+    margin-top: 80px;
+    grid-template-columns: 230fr 470fr;
+    gap: 25px;
+  }
+}
+
+@media (min-width: 1024px) {
+  .article_why {
+    grid-template-columns: 222fr 475fr;
+  }
+
+  .what {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 20px;
+  }
+
+  .article_how {
+    margin-top: 60px;
+    grid-template-columns: 222fr 475fr;
+    gap: 30px;
+  }
+
+  .article_what .article_title {
+    width: 260px;
+  }
 }
 
 .pictures_block {
   display: grid;
-  margin: 20px 10px 0;
+  margin: 20px 10px 36px;
 }
 
 .pictures {
-    display: grid;
-    width: 100%;
-}
-
-.sunset {
+  display: grid;
   width: 100%;
+  gap: 4px;
 }
 
 .picture {
   width: 100%;
-  height: 100%;
-  object-fit: contain;
+  margin-top: 2px;
+  object-fit: cover;
 }
 
 @media (min-width: 768px) {
-
   .pictures_block {
-    display: grid;
-    margin: 60px 20px 0;
+    margin: 60px 20px 0 20px;
   }
 
   .pictures {
-    margin-top: 15px;
+    display: grid;
+    margin-top: 8px;
     grid-template-columns: 1fr 1fr 1fr;
     gap: 20px;
   }
 
-  .sunset {
-    grid-column-start: 1;
-    grid-column-end: 3;
-  }
-
   .picture {
+    height: 100%;
     object-fit: cover;
   }
 
+  .sunset {
+    grid-column: 1/3;
+  }
+
   .ice-cream {
-    grid-column-start: 3;
-    grid-column-end: 3;
-    grid-row: span 2;
+    grid-column: 3;
+    grid-row: 1/3;
   }
 
   .tape {
-    grid-row: span 2;
+    grid-row: 2/4;
   }
 
   .street {
-    grid-column-start: 2;
-    grid-column-end: 4;
+    grid-column: 2/4;
+    grid-row: 3;
   }
-
 }
 
 .article_title_pictures {
-  font-family: IBM Plex Mono;
+  font-family: "IBM Plex Mono", "Arial", sans-serif;
   font-size: 18px;
   font-weight: 700;
   line-height: 23px;
@@ -399,50 +434,47 @@ a:focus {
 
 .footer {
   display: grid;
+  position: relative;
+  margin-top: 0px;
+  margin: 0;
   justify-items: center;
   align-items: center;
   width: 100%;
-  height: 100vh;
-  margin-top: 42px;
+  height: max(668px, 100vh);
 }
 
 .focus_title {
+  margin: 4vh 0 0 0;
   align-self: center;
-  font-family: IBM Plex Mono;
-  font-size: clamp(7.25rem, 7.0115rem + 1.0178vw, 7.5rem);
+  margin-bottom: 4vh;
+  font-family: "IBM Plex Mono", "Arial", sans-serif;
+  font-size: var(--logo-size);
   font-weight: 700;
   line-height: 96px;
   letter-spacing: 0em;
   text-align: left;
   color: var(--focus-color);
-  text-shadow: 4px 4px var(--accent-color);
+  text-shadow: 2px 2px var(--shadow-color);
 }
 
 @media (min-width: 768px) {
-
   .footer {
-    margin-top: 53px;
+    margin-top: 43px;
   }
 
   .focus_title {
-    margin-bottom: 50px;
-    align-self: center;
-    font-family: IBM Plex Mono;
-    font-size: clamp(7.5rem, 0.5625rem + 14.4531vw, 9.8125rem);
-    font-weight: 700;
-    line-height: 96px;
-    letter-spacing: 0em;
-    text-align: left;
-    color: var(--focus-color);
-    text-shadow: 4px 4px var(--accent-color);
+    margin-bottom: 3.7vh;
   }
-
 }
 
 @media (min-width: 1024px) {
-
-  .focus_title {
-    text-shadow: 4px 4px rgba(255, 0, 112, 1);
+  .footer {
+    margin-top: 44px;
+    grid-template-columns: repeat(3, 1fr);
   }
 
+  .focus_title {
+    grid-column: 2;
+    margin-bottom: 4.5vh;
+  }
 }
