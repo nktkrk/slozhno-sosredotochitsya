@@ -12,10 +12,12 @@
   --accent-color: rgba(255, 141, 203, 1);
   --background-color: rgba(255, 241, 247, 1);
   --text-color: #353430;
+  --title-color: #353430;
   --background-image: url("../images/cover-image-light.png");
   --subtitle-color: #353430;
   --menu-color: #353430;
   --focus-color: rgba(255, 194, 230, 1);
+  --shadow-color: rgba(255, 141, 203, 1);
   --hover-color: rgba(50, 49, 45, 0.4);
   --rec-color: transparent;
 }
@@ -28,13 +30,20 @@
   --accent-color: rgba(255, 141, 203, 1);
   --background-color: rgba(255, 241, 247, 1);
   --text-color: #353430;
+  --title-color: #353430;
   --background-image: url("../image/cover-image-light.png");
   --subtitle-color: #353430;
   --menu-color: #353430;
   --focus-color: rgba(255, 194, 230, 1);
   --hover-color: rgba(50, 49, 45, 0.4);
   --rec-color: transparent;
-      /* Дублируем переменные светлой темы */
+      /* Дублируем переменные светлой темы */    
   }
-  
+
+}
+
+    @media (width >= 1024px) {
+      :root {
+        --shadow-color:  #FF0070;
+      }
 }
