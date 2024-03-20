@@ -419,7 +419,6 @@ a:focus {
   }
 
   .pictures {
-    display: grid;
     margin-top: 8px;
     grid-template-columns: 1fr 1fr 1fr;
     gap: 20px;
@@ -484,6 +483,7 @@ a:focus {
 }
 
 @media (min-width: 768px) {
+
   .footer {
     margin-top: 43px;
   }
@@ -494,8 +494,8 @@ a:focus {
 }
 
 @media (min-width: 1024px) {
+
   .footer {
-    margin-top: 44px;
     grid-template-columns: repeat(3, 1fr);
   }
 
